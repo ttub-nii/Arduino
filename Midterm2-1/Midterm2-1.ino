@@ -1,8 +1,8 @@
 #define buzzer_pin 10
-#define switch1_pin 4
-#define switch2_pin 5
-#define switch3_pin 6
-#define switch4_pin 7
+#define switch1_pin 6
+#define switch2_pin 7
+#define switch3_pin 8
+#define switch4_pin 9
 
 #define do_4 262
 #define re_4 294
@@ -28,13 +28,12 @@ void setup() {
   pinMode(switch2_pin, INPUT);
   pinMode(switch3_pin, INPUT);
   pinMode(switch4_pin, INPUT);
-  pinMode(buzzer_pin, OUPUT);
+  pinMode(buzzer_pin, OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   if (digitalRead(switch1_pin) == LOW || digitalRead(switch2_pin) == LOW || digitalRead(switch3_pin) == LOW || digitalRead(switch4_pin) == LOW) {
-    delay(100);
     sw = digitalRead(switch1_pin) + (digitalRead(switch2_pin) << 1) + (digitalRead(switch3_pin) << 2) + (digitalRead(switch4_pin) << 3);
 
     if (sw == 0b1110) play_scale(do_4,sw);
