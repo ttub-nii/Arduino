@@ -1,3 +1,7 @@
+// 학번, 성명 : 2017110059 황수빈
+// 날짜 : 2020/07/01/수요일
+// 프로그램 설명 : 스위치 4개로 미니 피아노 만들기
+
 #define buzzer_pin 10
 #define switch1_pin 6
 #define switch2_pin 7
@@ -13,7 +17,7 @@
 #define si_4 494
 #define do_5 523
 
-unsigned char sw = 0;
+unsigned char sw = 0; // 스위치 값 저장 변수
 
 void play_scale(unsigned int scale, unsigned long push_sw) {
   tone(buzzer_pin, scale);
@@ -35,7 +39,8 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (digitalRead(switch1_pin) == LOW || digitalRead(switch2_pin) == LOW || digitalRead(switch3_pin) == LOW || digitalRead(switch4_pin) == LOW) {
     sw = digitalRead(switch1_pin) + (digitalRead(switch2_pin) << 1) + (digitalRead(switch3_pin) << 2) + (digitalRead(switch4_pin) << 3);
-
+    
+    // 0 : on | 1 : off
     if (sw == 0b1110) play_scale(do_4,sw);
     else if (sw == 0b1101) play_scale(re_4,sw);
     else if (sw == 0b1011) play_scale(mi_4,sw);
